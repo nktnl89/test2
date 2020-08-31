@@ -1,0 +1,32 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+  <changeSet id="create_certificates_table" author="anton_niktin@epam.com">
+    <createTable tableName="certificates">
+      <column name="id" type="int">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="owner_id" type="int">
+        <constraints nullable="false"/>
+      </column>
+      <column name="expiration_date" type="date">
+        <constraints nullable="false"/>
+      </column>
+      <column name="rate" type="int">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="add_certificates_foreign_persons_key" author="anton_nikitin@epam.com">
+    <addForeignKeyConstraint baseColumnNames="owner_id"
+      baseTableName="certificates"
+      constraintName="fk_certificate_owner_id"
+      referencedColumnNames="id"
+      referencedTableName="persons"/>
+  </changeSet>
+
+</databaseChangeLog>

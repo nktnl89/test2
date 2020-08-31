@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/car_loan_db
+    username: postgres
+    password: postgres
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false
+
+management:
+  security:
+    enabled: false
+
